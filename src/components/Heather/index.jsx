@@ -12,12 +12,18 @@ const Container = styled.div`
 const Icon = styled.img`
     width: 5rem;
     margin-right: 2rem;
+    @media(max-width: 767px) {
+        width: 3rem;
+    }
 `;
 
 const Title = styled.span`
     font-size: 4rem;
     color: white;
     font-family: 'Permanent Marker', cursive;
+    @media(max-width: 767px) {
+        font-size: 3rem;
+    }
 `;
 
 export default () => {
