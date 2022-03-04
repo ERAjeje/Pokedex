@@ -1,7 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Display from "../../components/Display";
+import ListPokemon from '../ListPokemon'
 import Heather from "../../components/Heather";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Pokemon from "../Pokemon";
+import Row from "../../components/Row";
 
 const Background = styled.div`
     display: flex;
@@ -34,11 +37,6 @@ const Button = styled.button`
     }
 `;
 
-const Row = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
 
 
 export default function Home() {
@@ -56,7 +54,16 @@ export default function Home() {
             </Row>
             <Row>
                 <Button onClick={_handleMinusClick} >{'<'}</Button>
-                <Display offset={page * 12} />
+                <Router>
+                    <Switch>
+                        <Route exact path='/'>
+                            <ListPokemon offset={page * 12} />
+                        </Route>
+                        <Route path='/:id'>
+                            <Pokemon />
+                        </Route>
+                    </Switch>
+                </Router>
                 <Button onClick={_handlePlusClick} >{'>'}</Button>
             </Row>
         </Background>
