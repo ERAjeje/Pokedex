@@ -23,6 +23,15 @@ const Button = styled.button`
     border: none;
     margin: auto;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 1);
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+        width: 120px;
+        height: 120px;
+        border-radius: 60px;
+        margin: 0 25px;
+    }
+    @media(max-width: 767px) {
+        display: none;
+    }
 `;
 
 const Row = styled.div`
