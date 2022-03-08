@@ -12,6 +12,7 @@ import TextSpan from "../../components/TextSpan";
 import EvolutionChain from "../../components/EvolutionChain";
 import Button from "../../components/Button";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import axios from "axios";
 
 const CardPokemon = styled.div`
     display: flex;
@@ -26,23 +27,23 @@ const Sprite = styled.img`
 `;
 
 export default () => {
-    const history = useHistory();
     const { id } = useParams();
+    const history = useHistory();
     const [pokemon, setPokemon] = useState(null);
     const [evolution, setEvolution] = useState(null);
 
 
     const _handlePlusClick = () => history.replace(`/${parseInt(id) + 1}`);
     const _handleMinusClick = () => {
-        if (id - 1 > 0) history.replace(parseInt(id) - 1);
+        if (parseInt(id) - 1 > 0) history.replace(`/${parseInt(id) - 1}`);
     };
 
     useEffect(() => {
         const asyncFunction = async () => {
             let data = await getItem(`pokemon/${id}`);
             setPokemon({ ...data });
-            data = await getItem(`evolution-chain/${id}/`);
-            setEvolution({ ...data })
+            data = await getItem(`pokemon-species/${id}/`);
+            axios.get(data.evolution_chain.url).then(item => setEvolution(item.data))
         }
         asyncFunction();
     }, [id])
