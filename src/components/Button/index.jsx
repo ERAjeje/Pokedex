@@ -10,7 +10,8 @@ const Button = styled.button`
     font-weight: bold;
     border: none;
     margin: auto;
-    box-shadow: 1px 2px 5px rgba(0, 0, 0, 1);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), inset 0 0 3rem rgba(0, 0, 0, 0.6);
+    cursor: pointer;
     @media screen and (min-width: 768px) and (max-width: 1023px) {
         width: 120px;
         height: 120px;
