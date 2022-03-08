@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import ListPokemon from '../ListPokemon'
 import Heather from "../../components/Heather";
@@ -40,31 +39,23 @@ const Button = styled.button`
 
 
 export default function Home() {
-    const [page, setPage] = useState(0);
 
-    const _handlePlusClick = () => setPage(page + 1);
-    const _handleMinusClick = () => {
-        if (page - 1 > 0) setPage(page - 1);
-        else setPage(0);
-    };
     return (
         <Background>
             <Row>
                 <Heather />
             </Row>
             <Row>
-                <Button onClick={_handleMinusClick} >{'<'}</Button>
                 <Router>
                     <Switch>
                         <Route exact path='/'>
-                            <ListPokemon offset={page * 12} />
+                            <ListPokemon />
                         </Route>
                         <Route path='/:id'>
                             <Pokemon />
                         </Route>
                     </Switch>
                 </Router>
-                <Button onClick={_handlePlusClick} >{'>'}</Button>
             </Row>
         </Background>
     )
