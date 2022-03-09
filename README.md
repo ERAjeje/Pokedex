@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Pokedex
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto foi idealizado para servir de projeto integrador para aplicação dos conhecimentos adquiridos durante os estudos na trilha Sensedia Academy Alura.
 
-## Available Scripts
+Trata-se de uma aplicação React SPA que utiliza as tecnologias ***React Router*** e ***Styled Components*** e consome a api pública ***PokéApi***.
 
-In the project directory, you can run:
+## Imagens do Projeto
 
-### `npm start`
+Tela Inicial
+!["Tela inicial"](images/1.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Tela de Detalhes do Pokemon
+!["Detalhes do Pokemon"](images/2.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+!["Detalhes do Pokemon"](images/3.png)
 
-### `npm test`
+Detalhes do Gráfico
+!["Detalhes do Pokemon"](images/4.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Dependências Externas
 
-### `npm run build`
+### PokéAPI
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+O projeto ***PokéAPI*** oferece API RESTful para objetos altamente detalhados construídos a partir de milhares de linhas de dados relacionados a Pokémon.*
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**informação retirada do site [PokéAPI](https://pokeapi.co/about)*
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### React SVG Radar Chart
 
-### `npm run eject`
+Esta dependencia oferece uma implementação de um gráfico de radar em formato svg, leve, de fácil utilização e pronto para exibição.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Axios
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Axios é uma implementação de um cliente HTTP assíncrono em javacript.*
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**informação retirada do repositório [github do projeto](https://github.com/axios/axios)*
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Scripts Disponíveis
 
-## Learn More
+Dentro da pasta do projeto, utilize:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `npm start` ou `yarn start`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Para rodar o app em modo de desenvolvimento.\
+Abra [http://localhost:3000](http://localhost:3000) para visualizar em seu navegador.
 
-### Code Splitting
+### `npm test` ou `yarn test`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Para rodar os testes.
