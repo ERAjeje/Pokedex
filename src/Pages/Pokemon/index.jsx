@@ -23,7 +23,7 @@ const CardPokemon = styled.div`
 
 const Sprite = styled.img`
     margin: 15px 5px;
-    width: ${props => props.width ?? '255px'};
+    width: ${props => props.width ?? '175px'};
 `;
 
 export default () => {
@@ -49,7 +49,7 @@ export default () => {
     }, [id])
     return <>
         <Button onClick={_handleMinusClick}>{'<'}</Button>
-        <UtilArea>
+        <UtilArea hidden={false}>
             {pokemon !== null && evolution !== null ?
                 <CardPokemon>
                     <Row justify='start' >
@@ -70,7 +70,10 @@ export default () => {
                                 <TextSpan weight='light' >Type: </TextSpan>
                                 {
                                     pokemon.types.map((item, index) =>
-                                        <TextSpan key={index} weight='light'>{`${item.type.name}${index % 2 === 0 ? ' /' : ''}`}</TextSpan>
+                                        <>
+                                            <TextSpan key={index} weight='light'>{item.type.name}</TextSpan>
+                                            {index % 2 === 0 ? ' /' : ''}
+                                        </>
                                     )
                                 }
                             </Row>
