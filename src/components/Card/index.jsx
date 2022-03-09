@@ -15,10 +15,10 @@ const Card = styled.div`
     color: white;
 `;
 
-export default ({ name }) => {
+export default ({ children }) => {
     return (
         <Card>
-            {name.toUpperCase()}
+            {children}
         </Card>
     );
 }
