@@ -8,7 +8,7 @@ export const getList = async ( param ) => {
     return response.data;
 }
 
-export const getItem = async ( id ) => {
-    const response = await axios.get(`${_baseUrl}/${id}`);
+export const getItem = async ( param ) => {
+    const response = await axios.get(`${_baseUrl}/${param}`);
     return response.data;
 }
