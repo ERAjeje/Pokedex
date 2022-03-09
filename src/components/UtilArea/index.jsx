@@ -7,9 +7,10 @@ const UtilArea = styled.div`
     flex-wrap: wrap;
     height: 80vh;
     justify-content: space-around;
-    overflow: hidden;
+    overflow: ${props => props.hidden ? 'hidden' : ''};
     padding: 5px;
     width: 70%;
+    box-shadow: inset 0 0 1rem rgba(0, 0, 0, 0.2);
 `;
 
 export default UtilArea;

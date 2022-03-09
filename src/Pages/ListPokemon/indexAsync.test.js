@@ -6,14 +6,16 @@ import ListPokemon from '.';
 
 jest.mock('../../api/api');
 
-describe('Ao renderizar o componente ListPokemon', () => { 
-    it('deve receber os dados da API', async () => {
-        getList.mockResolvedValue(mockPokemonList);
+describe('Componente ListPokemon', () => {
+    describe('Ao renderizar o componente ListPokemon', () => { 
+        it('deve receber os dados da API contendo 12 filhos', async () => {
+            getList.mockResolvedValue(mockPokemonList);
 
-        render(<ListPokemon />);
-        
-        setTimeout(() => {
-            expect(screen.getByTestId('util-area').children.length).toBe(12);
-        }, 1);
+            render(<ListPokemon />);
+            
+            setTimeout(() => {
+                expect(screen.getByTestId('util-area').children.length).toBe(12);
+            }, 1);
+        })
     })
 })

@@ -10,7 +10,10 @@ export default ({ data }) => {
         aux[2] = (data.chain.evolves_to[0].evolves_to[0].species.name);
     return <Row>
         {
-            aux.map(item => <TextSpan key={item}>{item}</TextSpan>)
+            aux.map((item, index) => <>
+                <TextSpan key={item}>{item}</TextSpan>
+                {index < aux.length - 1 ? '-' : ''}
+            </>)
         }
     </Row>
 }
