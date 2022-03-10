@@ -7,6 +7,7 @@ import UtilArea from "../../components/UtilArea";
 
 import styled from 'styled-components';
 import Column from "../../components/Column";
+import ButtonBar from "../../components/ButtonBar";
 
 const CardLink = styled(Link)`
     text-decoration: none;
@@ -33,6 +34,9 @@ export default function Display() {
             setPokemon(data.results)
         }
         asyncFunction()
+        return function cleanup() {
+            setPokemon([])
+        }
     }, [page])
 
     return <>
@@ -48,6 +52,7 @@ export default function Display() {
                     </Card>
                 </CardLink>)
             }
+            <ButtonBar page={page} func={setPage} />
         </UtilArea>
         <Button onClick={_handlePlusClick} >{'>'}</Button>
     </>

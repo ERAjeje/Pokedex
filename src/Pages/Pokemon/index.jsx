@@ -13,6 +13,7 @@ import EvolutionChain from "../../components/EvolutionChain";
 import Button from "../../components/Button";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
+import ButtonBar from "../../components/ButtonBar";
 
 const CardPokemon = styled.div`
     display: flex;
@@ -32,10 +33,12 @@ export default () => {
     const [pokemon, setPokemon] = useState(null);
     const [evolution, setEvolution] = useState(null);
 
+    const param = parseInt(id);
 
-    const _handlePlusClick = () => history.replace(`/${parseInt(id) + 1}`);
+
+    const _handlePlusClick = () => history.replace(`/${param + 1}`);
     const _handleMinusClick = () => {
-        if (parseInt(id) - 1 > 0) history.replace(`/${parseInt(id) - 1}`);
+        if (param - 1 > 0) history.replace(`/${param - 1}`);
     };
 
     useEffect(() => {
@@ -53,6 +56,7 @@ export default () => {
             {pokemon !== null && evolution !== null ?
                 <CardPokemon>
                     <Row justify='start' >
+                        <ButtonBar param={param} />
                         <Sprite src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
                         <Column>
                             <TextSpan capitalize size='2.5rem'>{`Nº ${pokemon.order} - ${pokemon.name}`}</TextSpan>
@@ -63,7 +67,7 @@ export default () => {
                             <Row>
                                 {
                                     pokemon.abilities.map((item, index) =>
-                                        <TextSpan key={index} weight='light' >{`${item.ability.name}${index % 2 === 0 ? ' /' : ''}`}</TextSpan>)
+                                        <TextSpan key={item.ability.name} weight='light' >{`${item.ability.name}${index !== pokemon.abilities.length - 1 ? ' /' : ''}`}</TextSpan>)
                                 }
                             </Row>
                             <Row>
@@ -71,7 +75,7 @@ export default () => {
                                 {
                                     pokemon.types.map((item, index) =>
                                         <>
-                                            <TextSpan key={index} weight='light'>{item.type.name}</TextSpan>
+                                            <TextSpan key={item.type.name} weight='light'>{item.type.name}</TextSpan>
                                             {index % 2 === 0 ? ' /' : ''}
                                         </>
                                     )
@@ -79,7 +83,7 @@ export default () => {
                             </Row>
                         </Column>
                     </Row>
-                    <Row>
+                    <Row wrap>
                         <Column>
                             <Chart data={pokemon.stats} size={450} />
                         </Column>
