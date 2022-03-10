@@ -18,7 +18,7 @@ const Button = styled.button`
         border-radius: 60px;
         margin: 0 25px;
     }
-    @media(max-width: 767px) {
+    @media(max-width: 1068px) {
         display: none;
     }
 `;

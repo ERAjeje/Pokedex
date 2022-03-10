@@ -7,6 +7,7 @@ const Row = styled.div`
     align-items: ${props => props.align ?? 'center'};
     width: ${props => props.width ?? '100%'};
     height: ${props => props.height ?? ''};
+    flex-wrap: ${props => props.wrap ?? 'wrap'};
 `;
 
 export default ({ children }) => {
