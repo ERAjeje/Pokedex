@@ -1,6 +1,7 @@
 import Row from '../Row';
 import TextSpan from '../TextSpan';
 import styled from 'styled-components';
+import Column from '../Column';
 
 const Span = styled.div`
     padding-right: 1rem;
@@ -15,10 +16,12 @@ export default ({ data }) => {
         aux[2] = (data.chain.evolves_to[0].evolves_to[0].species.name);
     return <Row>
         {
-            aux.map((item, index) => <div key={item}>
-                <TextSpan padding='0' >{item}</TextSpan>
-                <Span>{index < aux.length - 1 ? '>' : ''}</Span>
-            </div>)
+            aux.map((item, index) => <Column key={index}>
+                <Row>
+                    <TextSpan padding='0' >{item}</TextSpan>
+                    <TextSpan>{index < aux.length - 1 ? '>' : ''}</TextSpan>
+                </Row>
+            </Column>)
         }
     </Row>
 }

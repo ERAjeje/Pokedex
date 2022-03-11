@@ -20,11 +20,22 @@ const CardPokemon = styled.div`
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
+    margin-top: -50px;
 `;
 
 const Sprite = styled.img`
     margin: 15px 5px;
     width: ${props => props.width ?? '175px'};
+`;
+
+const CloseButton = styled.span`
+    position: relative;
+    top: 5px;
+    left: 47%;
+    text-align: right;
+    font-weight: bold;
+    font-size: 2rem;
+    cursor: pointer;
 `;
 
 export default () => {
@@ -40,6 +51,7 @@ export default () => {
     const _handleMinusClick = () => {
         if (param - 1 > 0) history.replace(`/${param - 1}`);
     };
+    const _handleCloseClick = () => history.replace('/');
 
     useEffect(() => {
         getItem(`pokemon/${id}`).then(data => setPokemon({ ...data }));
@@ -48,6 +60,7 @@ export default () => {
     return <>
         <Button onClick={_handleMinusClick}>{'<'}</Button>
         <UtilArea hidden={false}>
+            <CloseButton onClick={_handleCloseClick}>X</CloseButton>
             {pokemon !== null && evolution !== null ?
                 <CardPokemon>
                     <Row justify='start' >

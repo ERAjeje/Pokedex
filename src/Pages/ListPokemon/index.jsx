@@ -30,10 +30,13 @@ export default function Display() {
 
     useEffect(() => {
         getList(offset).then(data => setPokemon(data.results));
+        function cleanup() {
+            setPokemon([])
+        }
     }, [page])
 
     return <>
-        <Button onClick={_handleMinusClick} >{'<'}</Button>
+        <Button data-testid='btnAnterior' onClick={_handleMinusClick} >{'<'}</Button>
         <UtilArea data-testid='util-area'>
             {
                 pokemon && pokemon.map((item, index) => <CardLink key={item.name} to={`/${index + 1 + offset}`}>
@@ -47,6 +50,6 @@ export default function Display() {
             }
             <ButtonBar page={page} func={setPage} />
         </UtilArea>
-        <Button onClick={_handlePlusClick} >{'>'}</Button>
+        <Button data-testid='btnProximo' onClick={_handlePlusClick} >{'>'}</Button>
     </>
 }
