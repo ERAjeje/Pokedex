@@ -11,11 +11,12 @@ describe('Componente ListPokemon', () => {
         it('deve receber os dados da API contendo 12 filhos', async () => {
             getList.mockResolvedValue(mockPokemonList);
 
-            /*render(<ListPokemon />)
+            render(<ListPokemon />)
+            /*
             await waitFor(() => expect(getByText('bulbasaur')).toBeInTheDocument())
             
             
-            expect(await screen.findByText('bulbasaur')).toBeInTheDocument();
+            expect(await screen.findByText('BULBASAUR')).toBeInTheDocument();
             expect(screen.getByTestId('util-area').children.length).toBe(12);*/
                 
             expect(true).toBe(true);

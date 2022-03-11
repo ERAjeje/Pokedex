@@ -1,20 +1,28 @@
-import { act, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import React from "react";
 import Pokemon from ".";
 import api, { getItem } from "../../api/api";
 import mockPokemon from "../../utils/mockPokemon";
 import mockEvolve from "../../utils/mockEvolve"
 import { useParams } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
+import { Router } from "react-router-dom";
+import { Route } from "react-router-dom";
+
+import { createMemoryHistory } from "history";
 
 jest.mock('../../api/api');
+jest.mock('react-router-dom')
 
 describe('Página Pokemon', () => {
     describe('Componente que deve renderizar as informações do Pokemon', () => {
         it('Ao inicializar, deve carregar as informações da API', async () => {
             getItem.mockResolvedValue(mockPokemon)
-            //act(() => render(<Pokemon />))
+            const history = createMemoryHistory()
+            history.push('/1')
+            render(<Pokemon />)
             
-            expect(true).toBe(true);
+            expect(await screen.findByText('Bulbasaur')).toBeInTheDocument();
         })
     })
 })
