@@ -1,5 +1,10 @@
 import Row from '../Row';
 import TextSpan from '../TextSpan';
+import styled from 'styled-components';
+
+const Span = styled.div`
+    padding-right: 1rem;
+`;
 
 export default ({ data }) => {
     let aux = [];
@@ -10,10 +15,10 @@ export default ({ data }) => {
         aux[2] = (data.chain.evolves_to[0].evolves_to[0].species.name);
     return <Row>
         {
-            aux.map((item, index) => <>
-                <TextSpan key={item}>{item}</TextSpan>
-                {index < aux.length - 1 ? '-' : ''}
-            </>)
+            aux.map((item, index) => <div key={item}>
+                <TextSpan padding='0' >{item}</TextSpan>
+                <Span>{index < aux.length - 1 ? '>' : ''}</Span>
+            </div>)
         }
     </Row>
 }
