@@ -42,13 +42,8 @@ export default () => {
     };
 
     useEffect(() => {
-        const asyncFunction = async () => {
-            let data = await getItem(`pokemon/${id}`);
-            setPokemon({ ...data });
-            data = await getItem(`pokemon-species/${id}/`);
-            axios.get(data.evolution_chain.url).then(item => setEvolution(item.data))
-        }
-        asyncFunction();
+        getItem(`pokemon/${id}`).then(data => setPokemon({ ...data }));
+        getItem(`pokemon-species/${id}/`).then(data => axios.get(data.evolution_chain.url).then(item => setEvolution(item.data)));
     }, [id])
     return <>
         <Button onClick={_handleMinusClick}>{'<'}</Button>
