@@ -2,14 +2,14 @@
 
 exports[`Componente de transação do extrato O snapshot do componente deve permanecer sempre o mesmo 1`] = `
 <svg
-  height="450"
+  height="405"
   version="1"
-  viewBox="-10 0 470 450"
-  width="450"
+  viewBox="-10 0 425 405"
+  width="405"
   xmlns="http://www.w3.org/2000/svg"
 >
   <g
-    transform="translate(225.0000,225.0000)"
+    transform="translate(202.5000,202.5000)"
   >
     <g>
       <circle
@@ -17,37 +17,37 @@ exports[`Componente de transação do extrato O snapshot do componente deve perm
         cx="0"
         cy="0"
         fill="none"
-        r="187.5"
+        r="168.75"
       />
       <circle
         class="scale"
         cx="0"
         cy="0"
         fill="none"
-        r="125"
+        r="112.5"
       />
       <circle
         class="scale"
         cx="0"
         cy="0"
         fill="none"
-        r="62.5"
+        r="56.25"
       />
     </g>
     <g>
       <polyline
         class="axis"
-        points="0.0000,0.0000 0.0000,-187.5000"
+        points="0.0000,0.0000 0.0000,-168.7500"
       />
       <polyline
         class="axis"
-        points="0.0000,0.0000 0.0000,187.5000"
+        points="0.0000,0.0000 0.0000,168.7500"
       />
     </g>
     <g>
       <path
         class="shape "
-        d="M0.0000,-84.3750L0.0000,91.8750z"
+        d="M0.0000,-75.9375L0.0000,82.6875z"
         fill="red"
         stroke="red"
       />
@@ -60,7 +60,7 @@ exports[`Componente de transação do extrato O snapshot do componente deve perm
         font-size="10"
         text-anchor="middle"
         x="0.0000"
-        y="-213.7500"
+        y="-192.3750"
       >
         hp
       </text>
@@ -71,7 +71,7 @@ exports[`Componente de transação do extrato O snapshot do componente deve perm
         font-size="10"
         text-anchor="middle"
         x="0.0000"
-        y="213.7500"
+        y="192.3750"
       >
         attack
       </text>

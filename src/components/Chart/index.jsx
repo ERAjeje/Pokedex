@@ -12,5 +12,8 @@ export default ({ data, size }) => {
         captions[index] = aux;
         stat[0].data[index] = parseFloat(`0.${item.base_stat}`);
     })
-    return <RadarChart data={stat} captions={captions} size={size} />
+    let aux = window.screen.width;
+    if (window.screen.width < 1068) aux = size - (size * 0.1)
+    else aux = size
+    return <RadarChart data={stat} captions={captions} size={aux} />
 }

@@ -13,11 +13,5 @@ describe('Página Home', () => {
         it('o texto pokedex', () => {
             expect(screen.getByText('Pokedex')).toBeInTheDocument()
         })
-        it('o botão de anterior', () => {
-            expect(screen.getByText('<')).toBeInTheDocument()
-        })
-        it('o botão de próximo', () => {
-            expect(screen.getByText('>')).toBeInTheDocument()
-        })
     })
 })

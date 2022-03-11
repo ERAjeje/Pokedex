@@ -29,14 +29,7 @@ export default function Display() {
     let offset = page * 12;
 
     useEffect(() => {
-        const asyncFunction = async () => {
-            const data = await getList(offset)
-            setPokemon(data.results)
-        }
-        asyncFunction()
-        return function cleanup() {
-            setPokemon([])
-        }
+        getList(offset).then(data => setPokemon(data.results));
     }, [page])
 
     return <>
