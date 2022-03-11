@@ -38,7 +38,7 @@ const CloseButton = styled.span`
     cursor: pointer;
 `;
 
-export default () => {
+export default function Pokemon() {
     const { id } = useParams();
     const history = useHistory();
     const [pokemon, setPokemon] = useState(null);
@@ -82,10 +82,10 @@ export default () => {
                                 <TextSpan weight='light' >Type: </TextSpan>
                                 {
                                     pokemon.types.map((item, index) =>
-                                        <>
-                                            <TextSpan key={item.type.name} weight='light'>{item.type.name}</TextSpan>
+                                        <div key={item.type.name}>
+                                            <TextSpan weight='light'>{item.type.name}</TextSpan>
                                             {index % 2 === 0 ? ' /' : ''}
-                                        </>
+                                        </div>
                                     )
                                 }
                             </Row>

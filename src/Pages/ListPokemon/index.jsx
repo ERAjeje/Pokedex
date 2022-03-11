@@ -13,8 +13,6 @@ const CardLink = styled(Link)`
     text-decoration: none;
 `;
 
-const aux = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-
 export default function Display() {
     const [pokemon, setPokemon] = useState([]);
     const [page, setPage] = useState(0);
@@ -30,19 +28,19 @@ export default function Display() {
 
     useEffect(() => {
         getList(offset).then(data => setPokemon(data.results));
-        function cleanup() {
+        return function cleanup() {
             setPokemon([])
         }
-    }, [page])
+    }, [page, offset])
 
     return <>
         <Button data-testid='btnAnterior' onClick={_handleMinusClick} >{'<'}</Button>
-        <UtilArea data-testid='util-area'>
+        <UtilArea data-testid='util-area' id="list">
             {
                 pokemon && pokemon.map((item, index) => <CardLink key={item.name} to={`/${index + 1 + offset}`}>
                     <Card data-testid='card-pokemon' index={index + 1 + offset} >
                         <Column>
-                            <img src={`${image}${index + 1 + offset}.png`} />
+                            <img src={`${image}${index + 1 + offset}.png`} alt={item.name} />
                             {item.name.toUpperCase()}
                         </Column>
                     </Card>
