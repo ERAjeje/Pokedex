@@ -1,52 +1,47 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import Pokemon from ".";
-import api, { getItem } from "../../api/api";
-import mockPokemon from "../../utils/mockPokemon";
-import mockEvolve from "../../utils/mockEvolve"
-import { useParams } from "react-router-dom";
-import { MemoryRouter } from "react-router-dom";
-import { Router } from "react-router-dom";
-import { Route } from "react-router-dom";
+import mockEvolve from "../../mocks/mockEvolve"
+import mockPokemon from "../../mocks/mockPokemon.json";
+import mockPokemonSpecies from "../../mocks/mockPokemonSpecies.json";
+import axios from "axios";
+import WrapperComponentTest from "../../components/WrapperComponentTest";
 
-import { createMemoryHistory } from "history";
-
-jest.mock('../../api/api');
-jest.mock('react-router-dom')
+jest.mock('axios');
 
 describe('Página Pokemon', () => {
     describe('Componente que deve renderizar as informações do Pokemon', () => {
+        const mockedAxios = axios;
+        afterEach(() => jest.resetAllMocks());
+
         it('Ao inicializar, deve carregar as informações da API', async () => {
-            getItem.mockResolvedValue(mockPokemon)
-            const history = createMemoryHistory()
-            history.push('/1')
-            render(<Pokemon />)
-            
-            expect(await screen.findByText('Bulbasaur')).toBeInTheDocument();
+
+            mockedAxios.get.mockReturnValueOnce(
+                Promise.resolve({
+                    data: mockPokemon
+                })
+            )
+            mockedAxios.get.mockReturnValueOnce(
+                Promise.resolve({
+                    data: mockPokemonSpecies
+                })
+            )
+            mockedAxios.get.mockReturnValueOnce(
+                Promise.resolve({
+                    data: mockEvolve
+                })
+            )
+
+            render(
+                <WrapperComponentTest>
+                    <Pokemon />
+                </WrapperComponentTest>
+            )
+
+            expect(await screen.findByText('X')).toBeInTheDocument();
+            expect(await screen.findByTestId('util-area')).toBeInTheDocument();
+
+            expect(true).toBe(true);
         })
     })
 })
-/*
-describe('Componente Pokemon', () => {
-    describe('Ao renderizar deve', () => {
-        beforeEach(() => {
-            jest.mock("react-router-dom", () => ({
-                ...jest.requireActual("react-router-dom"),
-                useParams: () => ({
-                    id: 1
-                })  
-            }));
-            act(() => render(<Pokemon />));
-        });
-        
-        it('mostrar o componente UtilArea', () => {
-            expect(screen.getByTestId('util-area')).toBeInTheDocument();
-        })
-        it('mostrar o botão <', () => {
-            expect(screen.getByText('<')).toBeInTheDocument()
-        })
-        it('mostrar o botão >', () => {
-            expect(screen.getByText('>')).toBeInTheDocument()
-        })
-    })
-})*/
