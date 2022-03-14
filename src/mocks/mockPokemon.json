@@ -1,4 +1,4 @@
-const mockPokemon = {
+{
     "abilities": [
         {
             "ability": {
@@ -11449,5 +11449,3 @@ const mockPokemon = {
     ],
     "weight": 69
 }
-
-export default mockPokemon;

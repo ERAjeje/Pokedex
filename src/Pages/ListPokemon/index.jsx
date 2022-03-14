@@ -38,7 +38,7 @@ export default function Display() {
         <UtilArea data-testid='util-area' id="list">
             {
                 pokemon && pokemon.map((item, index) => <CardLink key={item.name} to={`/${index + 1 + offset}`}>
-                    <Card data-testid='card-pokemon' index={index + 1 + offset} >
+                    <Card>
                         <Column>
                             <img src={`${image}${index + 1 + offset}.png`} alt={item.name} />
                             {item.name.toUpperCase()}

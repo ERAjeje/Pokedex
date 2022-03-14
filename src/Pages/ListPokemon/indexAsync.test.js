@@ -1,26 +1,32 @@
-import { act, getByText, render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import React from "react";
-import { getList } from "../../api/api";
-import mockPokemonList from '../../utils/mockPokemonList';
+import mockPokemonList from '../../mocks/mockPokemonList.json';
 import ListPokemon from '.';
+import WrapperComponentTest from "../../components/WrapperComponentTest";
+import axios from "axios";
 
-jest.mock('../../api/api');
+jest.mock("axios");
 
 describe('Componente ListPokemon', () => {
     describe('Ao renderizar o componente ListPokemon', () => { 
-        it('deve receber os dados da API contendo 12 filhos', async () => {
-            getList.mockResolvedValue(mockPokemonList);
+        const mockedAxios = axios;
+        afterEach(() => jest.clearAllMocks());
 
-            render(<ListPokemon />)
-            /*
-            await waitFor(() => expect(getByText('bulbasaur')).toBeInTheDocument())
+        it('deve receber os dados da API', async () => {
+            mockedAxios.get.mockReturnValueOnce(Promise.resolve({
+                data: mockPokemonList
+            }));
+
+            render(
+                <WrapperComponentTest>
+                    <ListPokemon />
+                </WrapperComponentTest>
+            )
             
             
-            expect(await screen.findByText('BULBASAUR')).toBeInTheDocument();
-            expect(screen.getByTestId('util-area').children.length).toBe(12);*/
-                
-            expect(true).toBe(true);
-                
+            expect(await screen.findByText('bulbasaur'.toUpperCase())).toBeInTheDocument();
+            expect(await screen.findByText('ivysaur'.toUpperCase())).toBeInTheDocument();
+            expect(await screen.findByText('butterfree'.toUpperCase())).toBeInTheDocument();
         })
     })
 })

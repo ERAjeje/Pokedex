@@ -20,7 +20,10 @@ const CardPokemon = styled.div`
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    margin-top: -50px;
+
+    @media screen and (min-width: 1069px) {
+        margin-top: -50px;
+    }
 `;
 
 const Sprite = styled.img`
@@ -36,6 +39,11 @@ const CloseButton = styled.span`
     font-weight: bold;
     font-size: 2rem;
     cursor: pointer;
+    display: none;
+
+    @media screen and (min-width: 1069px) {
+        display: inline;
+    }
 `;
 
 export default function Pokemon() {
@@ -59,12 +67,12 @@ export default function Pokemon() {
     }, [id])
     return <>
         <Button onClick={_handleMinusClick}>{'<'}</Button>
-        <UtilArea hidden={false}>
+        <UtilArea data-testid="util-area" hidden={false}>
             <CloseButton onClick={_handleCloseClick}>X</CloseButton>
             {pokemon !== null && evolution !== null ?
-                <CardPokemon>
+                <CardPokemon data-testid={`card-${id}`}>
+                    <ButtonBar param={param} />
                     <Row justify='start' >
-                        <ButtonBar param={param} />
                         <Sprite src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
                         <Column>
                             <TextSpan capitalize size='2.5rem'>{`Nº ${pokemon.order} - ${pokemon.name}`}</TextSpan>
