@@ -67,12 +67,12 @@ export default function Pokemon() {
     }, [id])
     return <>
         <Button onClick={_handleMinusClick}>{'<'}</Button>
-        <UtilArea data-testid="util-area" hidden={false}>
+        <UtilArea data-testid="util-area" hidden>
             <CloseButton onClick={_handleCloseClick}>X</CloseButton>
             {pokemon !== null && evolution !== null ?
                 <CardPokemon data-testid={`card-${id}`}>
                     <ButtonBar param={param} />
-                    <Row justify='start' >
+                    <Row justify="center" >
                         <Sprite src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
                         <Column>
                             <TextSpan capitalize size='2.5rem'>{`Nº ${pokemon.order} - ${pokemon.name}`}</TextSpan>
@@ -86,24 +86,23 @@ export default function Pokemon() {
                                         <TextSpan key={item.ability.name} weight='light' >{`${item.ability.name}${index !== pokemon.abilities.length - 1 ? ' /' : ''}`}</TextSpan>)
                                 }
                             </Row>
-                            <Row>
+                            <Row justify="center" >
                                 <TextSpan weight='light' >Type: </TextSpan>
                                 {
                                     pokemon.types.map((item, index) =>
                                         <div key={item.type.name}>
-                                            <TextSpan weight='light'>{item.type.name}</TextSpan>
-                                            {index % 2 === 0 ? ' /' : ''}
+                                            <TextSpan weight='light'>{`${item.type.name}${index !== pokemon.types.length - 1 ? ' /' : ''}`}</TextSpan>
                                         </div>
                                     )
                                 }
                             </Row>
                         </Column>
                     </Row>
-                    <Row wrap>
-                        <Column>
-                            <Chart data={pokemon.stats} size={450} />
+                    <Row width={'100%'}>
+                        <Column width={'40%'} left='20px'>
+                            <Chart data={pokemon.stats} size={425} />
                         </Column>
-                        <Column>
+                        <Column width={'60%'}>
                             <EvolutionChain data={evolution} />
                         </Column>
                     </Row>

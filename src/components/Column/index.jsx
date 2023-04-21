@@ -7,8 +7,14 @@ const Col = styled.div`
     align-items: ${props => props.align ?? 'center'};
     width: ${props => props.width ?? ''};
     height: ${props => props.height ?? ''};
+    left: ${props => props.left || ''};
+
+    @media screen and (max-width: 1379px) {
+        justify-content: center;
+    }
 `;
 
-export default ({ children }) => {
+// eslint-disable-next-line import/no-anonymous-default-export
+export default ({ children, left, width, height, align, justify }) => {
     return <Col>{children}</Col>;
 }
